@@ -37,6 +37,8 @@
             document.addEventListener('click', function () {
                 let noShow = document.querySelector(".mobileList");
                 noShow.style.display = "none";
+                noShow.classList.toggle("mobileList");
+                noShow.classList.toggle("navItem");
             }, true)
 
             document.getElementById('mobile').addEventListener('click', showMenu);
@@ -45,6 +47,7 @@
                 show.className = "mobileList";
                 show.style.display = "flex";
             }
+
         </script>
     </nav>
 
