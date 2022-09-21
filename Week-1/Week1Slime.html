@@ -13,7 +13,7 @@
     <!-- 頂端標頭 -->
     <nav>
         <div class="navName">My Website</div>
-        <div onmousedown="change();" onmouseup="back();" class="mobile">
+        <div id="mobile">
             <img src="PICS/menuIcon.png" alt="" class="menuIcon">
         </div>
         <div class="navItem">
@@ -23,15 +23,27 @@
             <div class="item">ITEM 4</div>
         </div>
         <script>
-            function change() {
-                let show = document.querySelector(".navItem");
-                show.className = "mobileList"
-                show.style.display = "flex";
-            }
-            function back() {
+            // function change() {
+            //     let show = document.querySelector(".navItem");
+            //     show.className = "mobileList";
+            //     show.style.display = "flex";
+            // }
+            // function back() {
+            //     let noShow = document.querySelector(".mobileList");
+            //     noShow.className = "navItem";
+            //     noShow.style.display = "none";
+            // }
+
+            document.addEventListener('click', function () {
                 let noShow = document.querySelector(".mobileList");
-                noShow.className = "navItem";
                 noShow.style.display = "none";
+            }, true)
+
+            document.getElementById('mobile').addEventListener('click', showMenu);
+            function showMenu() {
+                let show = document.querySelector(".navItem");
+                show.className = "mobileList";
+                show.style.display = "flex";
             }
         </script>
     </nav>
