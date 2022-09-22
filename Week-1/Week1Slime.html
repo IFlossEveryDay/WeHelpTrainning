@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第一週 - 清除城鎮周圍的史萊姆</title>
     <link rel="stylesheet" type="text/css" href="SlimeCSS.css" />
+
 </head>
 
 <body>
+    <div class="exceptContainer">
+        <div class="exceptMobileList"></div>
+    </div>
     <!-- 頂端標頭 -->
     <nav>
         <div class="navName">My Website</div>
@@ -22,6 +26,7 @@
             <div class="item">ITEM 3</div>
             <div class="item">ITEM 4</div>
         </div>
+
         <script>
             // function change() {
             //     let show = document.querySelector(".navItem");
@@ -34,21 +39,29 @@
             //     noShow.style.display = "none";
             // }
 
-            document.addEventListener('click', function () {
-                let noShow = document.querySelector(".mobileList");
-                // noShow.style.display = "none";
-                noShow.classList.toggle("mobileList");
-                noShow.classList.toggle("navItem");
-            }, true)
+            // document.addEventListener('click', function () {
+            //     let noShow = document.querySelector(".mobileList");
+            //     // noShow.style.display = "none";
+            //     // noShow.classList.toggle("mobileList");
+            //     noShow.classList.add("navItem");
+            // }, true)
 
-            document.getElementById('mobile').addEventListener('click', showMenu);
+            document.querySelector("#mobile").addEventListener('click', showMenu);
             function showMenu() {
                 let show = document.querySelector(".navItem");
                 show.className = "mobileList";
-                // show.style.display = "flex";
+                let other = document.querySelector(".exceptMobileList")
+                other.style.display = "flex";
             }
-
+            document.querySelector(".exceptMobileList").addEventListener('click', noShow);
+            function noShow() {
+                let no = document.querySelector(".mobileList");
+                no.className = "navItem";
+                let hidden = document.querySelector(".exceptMobileList");
+                hidden.style.display = "none";
+            }
         </script>
+
     </nav>
 
     <!-- 中間 Welcome -->
