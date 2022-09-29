@@ -96,7 +96,7 @@ def maxProduct(nums):
     # 請用你的程式補完這個函式的區塊
     if len(nums) < 2:
         print("無法相乘")
-    result = -1000000000
+    result = float("-inf")
 
     for x in nums:
         for y in nums:
