@@ -7,6 +7,10 @@
 
 import bs4
 import urllib.request as req
+allTitles = {}
+niceMovie = ""
+normalMovie = ""
+badMovie = ""
 
 
 def getData(url):
@@ -18,13 +22,38 @@ def getData(url):
     with req.urlopen(request) as response:
         data = response.read().decode("utf-8")
 
-    root = bs4.BeautifulSoup(data, "html.parser")
-    titles = root.find_all("div", class_="title")
-    nice = root.find_all("a", string_="好雷")
-    for title in titles:
-        if title.a != None:
+        root = bs4.BeautifulSoup(data, "html.parser")
+        titles = root.find_all("div", class_="title")
 
-            print(title.a.string)
+        for title in titles:
+            if title.a != None:
+                allTitles = {title.a.string}
+                for nice in allTitles:
+                    if "[好雷]" in nice:
+                        if "Re:" not in nice:
+                            global niceMovie
+                            niceMovie += nice + "\n"
+                            # print(niceMovie)
+                            # movies.write(niceMovie + "\n")
+                            # print(niceMovie + normalMovie + badMovie)
+                for normal in allTitles:
+                    if "[普雷]" in normal:
+                        if "Re:" not in normal:
+                            global normalMovie
+                            normalMovie += normal + "\n"
+                            # print(normalMovie)
+                            # movies.write(normalMovie + "\n")
+                for bad in allTitles:
+                    if "[負雷]" in bad:
+                        if "Re:" not in bad:
+                            global badMovie
+                            badMovie += bad + "\n"
+                            # movies.write(badMovie + "\n")
+                            # print(badMovie)
+
+    # movies.write(niceMovie + "\n" +
+    #              normalMovie + "\n" +
+    #              badMovie)
 
     nextLink = root.find("a", string="‹ 上頁")
     return nextLink["href"]
@@ -37,5 +66,36 @@ count = 0
 while count < 10:
     pageURL = "https://www.ptt.cc" + getData(pageURL)
     count += 1
-with open("movie.txt", "a", encoding="utf-8") as movies:
-    movies.write(title.a.string)
+
+
+with open("movies.txt", "a", encoding="utf-8") as movies:
+    movies.write(niceMovie + "\n" +
+                 normalMovie + "\n" +
+                 badMovie)
+
+# print(niceMovie + "\n" + normalMovie + "\n" + badMovie)
+
+# for title in titles:
+#            if title.a != None:
+#                 allTitles = {title.a.string}
+#                 for nice in allTitles:
+#                     if "[好雷]" in nice:
+#                         if "Re:" not in nice:
+#                             niceMovie = nice
+#                             print(niceMovie)
+#             # movies.write(niceMovie + "\n")
+#             for normal in allTitles:
+#                 if "[普雷]" in normal:
+#                     if "Re:" not in normal:
+#                         normalMovie = normal
+#                         print(normalMovie)
+#                         # movies.write(normalMovie + "\n")
+#             for bad in allTitles:
+#                 if "[負雷]" in bad:
+#                     if "Re:" not in bad:
+#                         badMovie = bad
+#                         # movies.write(badMovie + "\n")
+#                     # print(niceMovie)
+#     # movies.write(niceMovie + "\n" +
+#     #              normalMovie + "\n" +
+#     #              badMovie)
