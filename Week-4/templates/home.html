@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烘培雞</title>
+    <link rel="stylesheet" type="text/css" href="../static/homeCSS.css">
+</head>
+
+
+<body>
+    <section class="loginArea">
+        <div class="loginNav">
+            <span class=titleText>請輸入帳號密碼</span>
+        </div>
+
+        <div class="form">
+            <div class="title">
+                <span>請登入系統</span>
+            </div>
+            <form method="POST" action="/signin">
+                <div class="account">
+                    <span>帳號</span>
+                    <input type="text" placeholder="請輸入帳號" name=account>
+
+                </div>
+                <div class="password">
+                    <span>密碼</span>
+                    <input type="password" placeholder="請輸入密碼" name=password>
+                </div>
+                <button>登入</button>
+        </div>
+        <br>
+        </form>
+        <div class="calculate">
+
+            <form action="/square">
+                <div class="squareText">順便幫你算算正整數的平方好不好呀</div>
+                <input type="text" placeholder="請輸入正整數" name="nums" id="nums">
+                <button>好呀</button>
+            </form>
+        </div>
+    </section>
+    <script>
+
+    </script>
+</body>
+
+</html>
