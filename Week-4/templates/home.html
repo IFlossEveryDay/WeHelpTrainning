@@ -36,15 +36,16 @@
         </form>
         <div class="calculate">
 
-            <form action="/square">
-                <div class="squareText">順便幫你算算正整數的平方好不好呀</div>
-                <input type="text" placeholder="請輸入正整數" name="nums" id="nums">
-                <button>好呀</button>
-            </form>
+            <div class="squareText">順便幫你算算正整數的平方好不好呀</div>
+            <input type="text" placeholder="請輸入正整數" name="num" id="num">
+            <button class="btn">好呀</button>
         </div>
     </section>
     <script>
-
+        let number = document.querySelector(".btn")
+        number.addEventListener("click", function (event) {
+            window.location.assign("/square/" + document.getElementById("num").value)
+        })
     </script>
 </body>
 

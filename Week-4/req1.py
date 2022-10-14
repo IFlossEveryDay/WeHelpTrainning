@@ -1,6 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session
 week4 = Flask(__name__)
-
 week4.secret_key = "ererererer"
 
 
@@ -54,22 +53,17 @@ def signout():
     return redirect("/")
 
 
-@week4.route("/square")
-def Square():
-    num = request.args.get("nums", 0)
-    num = int(num)
-    # num = num**2
-    # return render_template("result.html")
-    return redirect(url_for("handleSquare", result=num))
+# @week4.route("/square")
+# def Square():
+#     num = request.args.get("nums", 0)
+#     num = int(num)
+#     return redirect(url_for("handleSquare", result=num))
 
+# from JS directly send parameters in
+@ week4.route("/square/<int:num>")
+def handleSquare(num):
 
-@ week4.route("/square/<int:result>")
-def handleSquare(result):
-    # if methods == "POST":
-    #     root = request.form("num", 0)
-    #     root = int(root)
-    # return render_template("result.html")
-    return render_template("result.html", ans=result**2)
+    return render_template("result.html", ans=num**2)
 
 
 if __name__ == "__main__":
