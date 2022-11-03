@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/week7.css">
+    <title>Week7</title>
+</head>
+
+<body>
+    <div class="box">
+        <nav class=welcome>
+            歡迎光臨，請註冊或登入系統
+        </nav>
+        <div class="register">
+            <div class="regTitle">註冊帳號</div>
+            <form method="POST" action="/signup">
+                <div class="regName">
+                    姓名<input type="text" name=regName>
+                </div>
+                <div class="regAccount">
+                    帳號<input type="text" name=regAccount>
+                </div>
+                <div class="regPassword">
+                    密碼<input type="password" name=regPassword>
+                </div>
+                <button>註冊</button>
+            </form>
+        </div>
+        <hr>
+        <div class="login">
+            <div class="loginTitle">登入系統</div>
+            <form method="POST" action="/signin">
+                <div class="loginAccount">
+                    帳號<input type="text" name=loginAccount>
+                </div>
+                <div class="loginPassword">
+                    密碼<input type="password" name=loginPassword>
+                </div>
+                <button>登入</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
